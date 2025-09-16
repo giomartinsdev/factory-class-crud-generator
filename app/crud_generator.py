@@ -1,4 +1,4 @@
-from typing import Type, Dict, List, Any, Optional
+from typing import Type, Dict, List, Optional
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
@@ -33,7 +33,7 @@ def create_pydantic_model(sqlalchemy_model: Type[BaseModel], exclude_fields: Lis
         elif column.default is not None:
             try:
                 default_value = column.default.arg if hasattr(column.default, 'arg') else None
-            except:
+            except Exception:
                 default_value = None
         elif column.name == 'id':
             continue
@@ -67,13 +67,13 @@ def create_crud_operations(model_class: Type[BaseModel]):
         """Get an item by ID (only active items)"""
         return db.query(model_class).filter(
             model_class.id == item_id,
-            model_class.is_active == True
+            model_class.is_active
         ).first()
     
     def get_items(db: Session, skip: int = 0, limit: int = 100) -> List[BaseModel]:
         """Get multiple items with pagination (only active items)"""
         return db.query(model_class).filter(
-            model_class.is_active == True
+            model_class.is_active
         ).offset(skip).limit(limit).all()
     
     def update_item(db: Session, item_id: int, item_data: dict) -> Optional[BaseModel]:
@@ -81,7 +81,7 @@ def create_crud_operations(model_class: Type[BaseModel]):
         try:
             db_item = db.query(model_class).filter(
                 model_class.id == item_id,
-                model_class.is_active == True
+                model_class.is_active
             ).first()
             if not db_item:
                 return None
@@ -104,7 +104,7 @@ def create_crud_operations(model_class: Type[BaseModel]):
         """Soft delete an item by setting is_active to False"""
         db_item = db.query(model_class).filter(
             model_class.id == item_id,
-            model_class.is_active == True
+            model_class.is_active
         ).first()
         if not db_item:
             return False
@@ -130,7 +130,7 @@ def generate_crud_routes(app: FastAPI, models: Dict[str, Type[BaseModel]]):
     for model_name, model_class in models.items():
         create_model_schema = create_pydantic_model(model_class, exclude_fields=['id', 'created_at', 'updated_at', 'is_active'])
         update_model_schema = create_pydantic_model(model_class, exclude_fields=['id', 'created_at', 'updated_at', 'is_active'])
-        response_model_schema = create_pydantic_model(model_class)
+        create_pydantic_model(model_class)
         
         crud_ops = create_crud_operations(model_class)
         

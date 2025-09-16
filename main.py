@@ -5,7 +5,6 @@ from app.database import create_tables
 from app.model_discovery import discover_and_register_models
 from app.crud_generator import generate_crud_routes
 
-# Create FastAPI application
 app = FastAPI(
     title=settings.api_title,
     description=settings.api_description,
@@ -14,7 +13,6 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
