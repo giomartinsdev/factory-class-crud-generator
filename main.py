@@ -37,7 +37,7 @@ async def startup_event():
 async def root():
     """Root endpoint"""
     return {
-        "message": "Welcome to API-AD",
+        "message": "Welcome to factory-class-crud-generator",
         "description": "Auto-generated CRUD API from model classes",
         "docs": "/docs",
         "redoc": "/redoc"

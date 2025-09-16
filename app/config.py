@@ -10,7 +10,7 @@ class Settings(BaseSettings):
         "postgresql://postgres:password@localhost:5432/api_ad"
     )
     
-    api_title: str = "API-AD"
+    api_title: str = "factory-class-crud-generator"
     api_description: str = "Auto-generated CRUD API from model classes"
     api_version: str = "1.0.0"
     

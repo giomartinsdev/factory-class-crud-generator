@@ -1,6 +1,6 @@
-# API-AD: Auto-Generated CRUD API
+# factory-class-crud-generator: Auto-Generated CRUD API
 
-API-AD is a Python FastAPI application that automatically discovers model classes in a models directory, creates PostgreSQL database tables, and generates complete CRUD endpoints with OpenAPI documentation.
+factory-class-crud-generator is a Python FastAPI application that automatically discovers model classes in a models directory, creates PostgreSQL database tables, and generates complete CRUD endpoints with OpenAPI documentation.
 
 ## Features
 
@@ -25,7 +25,7 @@ API-AD is a Python FastAPI application that automatically discovers model classe
 1. Clone or download the project:
 ```bash
 git clone <repository-url>
-cd api-ad
+cd factory-class-crud-generator
 ```
 
 2. Install dependencies:
@@ -152,7 +152,7 @@ POSTGRES_USER=example
 POSTGRES_PASSWORD=pass
 
 # API Configuration
-API_TITLE=API-AD
+API_TITLE=factory-class-crud-generator
 API_DESCRIPTION=Auto-generated CRUD API from model classes
 API_VERSION=1.0.0
 
@@ -172,7 +172,7 @@ The application uses PostgreSQL by default. You can modify the database URL in t
 ## Project Structure
 
 ```
-api-ad/
+factory-class-crud-generator/
 ├── app/
 │   ├── __init__.py
 │   ├── config.py              # Application configuration
