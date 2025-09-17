@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     
     database_url: str = os.getenv(
         "DATABASE_URL",
-        "postgresql://postgres:password@localhost:5432/api_ad"
+        "postgresql://postgres:password@localhost:5432/fccg"
     )
     
     api_title: str = "factory-class-crud-generator"

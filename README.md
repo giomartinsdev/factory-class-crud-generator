@@ -43,7 +43,7 @@ sudo apt install postgresql postgresql-contrib
 sudo systemctl start postgresql
 
 # Create database and user
-sudo -u postgres createdb api_ad
+sudo -u postgres createdb fccg
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'password';"
 ```
 
@@ -146,7 +146,7 @@ Create a `.env` file in the project root:
 
 ```env
 # Database Configuration
-DATABASE_URL=postgresql://postgres:password@localhost:5432/api_ad
+DATABASE_URL=postgresql://postgres:password@localhost:5432/fccg
 POSTGRES_DB=example
 POSTGRES_USER=example
 POSTGRES_PASSWORD=pass
@@ -229,7 +229,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 3. **Environment Variables for Production**:
 ```env
-DATABASE_URL=postgresql://user:password@db-host:5432/api_ad
+DATABASE_URL=postgresql://user:password@db-host:5432/fccg
 DEBUG=false
 ```
 

@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:15
+    image: public.ecr.aws/docker/library/postgres:15
     env_file:
       - .env
     ports:
@@ -18,7 +18,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql://postgres:password@db:5432/api_ad
+      DATABASE_URL: postgresql://postgres:password@db:5432/fccg
       DEBUG: "true"
     depends_on:
       db:
